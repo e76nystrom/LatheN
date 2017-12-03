@@ -56,6 +56,10 @@
 #define ZB_Pin GPIO_PIN_15
 #define ZB_GPIO_Port GPIOC
 #define ZB_EXTI_IRQn EXTI15_10_IRQn
+#define OSC_IN_Pin GPIO_PIN_0
+#define OSC_IN_GPIO_Port GPIOH
+#define OSC_OUT_Pin GPIO_PIN_1
+#define OSC_OUT_GPIO_Port GPIOH
 #define Pin12_Pin GPIO_PIN_0
 #define Pin12_GPIO_Port GPIOC
 #define Pin11_Pin GPIO_PIN_1
@@ -89,8 +93,8 @@
 #define JogB1_Pin GPIO_PIN_5
 #define JogB1_GPIO_Port GPIOC
 #define JogB1_EXTI_IRQn EXTI9_5_IRQn
-#define Step3_Pin GPIO_PIN_0
-#define Step3_GPIO_Port GPIOB
+#define Step4_Pin GPIO_PIN_0
+#define Step4_GPIO_Port GPIOB
 #define Pin14_Pin GPIO_PIN_1
 #define Pin14_GPIO_Port GPIOB
 #define Pin1_Pin GPIO_PIN_2
@@ -124,6 +128,10 @@
 #define Pin17_GPIO_Port GPIOA
 #define Dir5_Pin GPIO_PIN_12
 #define Dir5_GPIO_Port GPIOA
+#define SWDIO_Pin GPIO_PIN_13
+#define SWDIO_GPIO_Port GPIOA
+#define SWCLK_Pin GPIO_PIN_14
+#define SWCLK_GPIO_Port GPIOA
 #define Pin13_Pin GPIO_PIN_15
 #define Pin13_GPIO_Port GPIOA
 #define ZFlag_Pin GPIO_PIN_10
@@ -135,6 +143,8 @@
 #define XB_EXTI_IRQn EXTI15_10_IRQn
 #define Index1_Pin GPIO_PIN_2
 #define Index1_GPIO_Port GPIOD
+#define SWO_Pin GPIO_PIN_3
+#define SWO_GPIO_Port GPIOB
 #define Dir2_Pin GPIO_PIN_4
 #define Dir2_GPIO_Port GPIOB
 #define Dir3_Pin GPIO_PIN_5
@@ -145,8 +155,8 @@
 #define I2C_Sda_GPIO_Port GPIOB
 #define Dbg0_Pin GPIO_PIN_8
 #define Dbg0_GPIO_Port GPIOB
-#define Step4_Pin GPIO_PIN_9
-#define Step4_GPIO_Port GPIOB
+#define Step3_Pin GPIO_PIN_9
+#define Step3_GPIO_Port GPIOB
 
 /* ########################## Assert Selection ############################## */
 /**
