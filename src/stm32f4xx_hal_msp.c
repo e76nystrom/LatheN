@@ -10,7 +10,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2017 STMicroelectronics
+  * COPYRIGHT(c) 2018 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -38,12 +38,13 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
-
 extern void _Error_Handler(char *, int);
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
-/**
+                        
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
+                                                                                                                                            /**
   * Initializes the Global MSP.
   */
 void HAL_MspInit(void)
@@ -51,6 +52,9 @@ void HAL_MspInit(void)
   /* USER CODE BEGIN MspInit 0 */
 
   /* USER CODE END MspInit 0 */
+
+  __HAL_RCC_SYSCFG_CLK_ENABLE();
+  __HAL_RCC_PWR_CLK_ENABLE();
 
   HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
 
@@ -205,6 +209,8 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
     /* Peripheral clock enable */
     __HAL_RCC_TIM1_CLK_ENABLE();
     /* TIM1 interrupt Init */
+    HAL_NVIC_SetPriority(TIM1_BRK_TIM9_IRQn, 6, 0);
+    HAL_NVIC_EnableIRQ(TIM1_BRK_TIM9_IRQn);
     HAL_NVIC_SetPriority(TIM1_UP_TIM10_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(TIM1_UP_TIM10_IRQn);
   /* USER CODE BEGIN TIM1_MspInit 1 */
@@ -374,6 +380,9 @@ void HAL_TIM_IC_MspInit(TIM_HandleTypeDef* htim_ic)
     GPIO_InitStruct.Alternate = GPIO_AF3_TIM9;
     HAL_GPIO_Init(Encoder_GPIO_Port, &GPIO_InitStruct);
 
+    /* TIM9 interrupt Init */
+    HAL_NVIC_SetPriority(TIM1_BRK_TIM9_IRQn, 6, 0);
+    HAL_NVIC_EnableIRQ(TIM1_BRK_TIM9_IRQn);
   /* USER CODE BEGIN TIM9_MspInit 1 */
 
   /* USER CODE END TIM9_MspInit 1 */
@@ -539,6 +548,14 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* htim_base)
     __HAL_RCC_TIM1_CLK_DISABLE();
 
     /* TIM1 interrupt DeInit */
+  /* USER CODE BEGIN TIM1:TIM1_BRK_TIM9_IRQn disable */
+    /**
+    * Uncomment the line below to disable the "TIM1_BRK_TIM9_IRQn" interrupt
+    * Be aware, disabling shared interrupt may affect other IPs
+    */
+    /* HAL_NVIC_DisableIRQ(TIM1_BRK_TIM9_IRQn); */
+  /* USER CODE END TIM1:TIM1_BRK_TIM9_IRQn disable */
+
   /* USER CODE BEGIN TIM1:TIM1_UP_TIM10_IRQn disable */
     /**
     * Uncomment the line below to disable the "TIM1_UP_TIM10_IRQn" interrupt
@@ -740,6 +757,15 @@ void HAL_TIM_IC_MspDeInit(TIM_HandleTypeDef* htim_ic)
     PA2     ------> TIM9_CH1 
     */
     HAL_GPIO_DeInit(Encoder_GPIO_Port, Encoder_Pin);
+
+    /* TIM9 interrupt DeInit */
+  /* USER CODE BEGIN TIM9:TIM1_BRK_TIM9_IRQn disable */
+    /**
+    * Uncomment the line below to disable the "TIM1_BRK_TIM9_IRQn" interrupt
+    * Be aware, disabling shared interrupt may affect other IPs
+    */
+    /* HAL_NVIC_DisableIRQ(TIM1_BRK_TIM9_IRQn); */
+  /* USER CODE END TIM9:TIM1_BRK_TIM9_IRQn disable */
 
   /* USER CODE BEGIN TIM9_MspDeInit 1 */
 
