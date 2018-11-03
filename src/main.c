@@ -846,8 +846,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : ExtInt_Pin Index2_Pin JogA1_Pin */
-  GPIO_InitStruct.Pin = ExtInt_Pin|Index2_Pin|JogA1_Pin;
+  /*Configure GPIO pins : ExtInt_Pin Index2_Pin */
+  GPIO_InitStruct.Pin = ExtInt_Pin|Index2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -858,11 +858,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : JogA2_Pin */
-  GPIO_InitStruct.Pin = JogA2_Pin;
+  /*Configure GPIO pins : JogA2_Pin JogA1_Pin */
+  GPIO_InitStruct.Pin = JogA2_Pin|JogA1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(JogA2_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pin : SPI_Sel_Pin */
   GPIO_InitStruct.Pin = SPI_Sel_Pin;
